@@ -2,12 +2,12 @@
 
 namespace LoginSystem.DTOs.Auth;
 
-public record LoginRequest([property: Required] string Username, [property: Required] string Password);
+public record LoginRequest([Required] string Username, [Required] string Password);
 
 public record AuthResponse(string AccessToken, DateTime AccessTokenExpiresAt, string RefreshToken,
     Guid UserId, string Username, string Role, Guid? OrganizationId);
 
-public record RefreshRequest([property: Required] string RefreshToken);
-public record VerifyEmailRequest([property: Required] Guid UserId, [property: Required] string Token);
-public record ForgotPasswordRequest([property: Required, EmailAddress] string Email);
-public record ResetPasswordRequest([property: Required] Guid UserId, [property: Required] string Token, [property: Required] string NewPassword);
+public record RefreshRequest([Required] string RefreshToken);
+public record VerifyEmailRequest([Required] Guid UserId, [Required] string Token);
+public record ForgotPasswordRequest([Required, EmailAddress] string Email);
+public record ResetPasswordRequest([Required] Guid UserId, [Required] string Token, [Required] string NewPassword);

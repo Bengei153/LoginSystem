@@ -3,9 +3,9 @@
 namespace LoginSystem.DTOs.Organizations;
 
 public record CreateOrganizationRequest(
-    [property: Required, MinLength(2)] string Name,
-    [property: Required, RegularExpression(@"^[a-z0-9]+(-[a-z0-9]+)*$", ErrorMessage = "Lowercase letters, numbers, hyphens only.")] string Slug,
-    [property: Required, EmailAddress] string ContactEmail,
+    [Required, MinLength(2)] string Name,
+    [Required, RegularExpression(@"^[a-z0-9]+(-[a-z0-9]+)*$", ErrorMessage = "Lowercase letters, numbers, hyphens only.")] string Slug,
+    [Required, EmailAddress] string ContactEmail,
     string? ContactPhone,
     string? Description);
 
