@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LoginSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260705162717_ConWeb")]
-    partial class ConWeb
+    [Migration("20260705192456_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -70,7 +70,11 @@ namespace LoginSystem.Migrations
                     LockoutEnd = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     EmailConfirmed = table.Column<bool>(type: "boolean", nullable: false),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                    DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    EmailVerificationTokenHash = table.Column<string>(type: "text", nullable: true),
+                    EmailVerificationTokenExpiresAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    PasswordResetTokenHash = table.Column<string>(type: "text", nullable: true),
+                    PasswordResetTokenExpiresAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
