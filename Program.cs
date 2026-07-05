@@ -90,12 +90,12 @@ using (var scope = app.Services.CreateScope())
     db.Database.Migrate();
 }
 
-if (app.Environment.IsDevelopment())
+using (var scope = app.Services.CreateScope())
 {
-    using var scope = app.Services.CreateScope();
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    var hasher = scope.ServiceProvider.GetRequiredService<IPasswordHasher<User>>();
+    db.Database.Migrate();
 
+    var hasher = scope.ServiceProvider.GetRequiredService<IPasswordHasher<User>>();
     if (!db.Users.Any(u => u.Role == UserRole.SuperAdmin))
     {
         var superAdmin = new User
@@ -107,11 +107,14 @@ if (app.Environment.IsDevelopment())
             Status = AccountStatus.Active,
             EmailConfirmed = true
         };
-        superAdmin.PasswordHash = hasher.HashPassword(superAdmin, "ChangeMe123!");
+        superAdmin.PasswordHash = hasher.HashPassword(superAdmin, "Benjie@123");
         db.Users.Add(superAdmin);
         db.SaveChanges();
     }
+}
 
+if (app.Environment.IsDevelopment())
+{
     app.UseSwagger();
     app.UseSwaggerUI();
 }
