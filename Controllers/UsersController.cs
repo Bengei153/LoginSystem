@@ -173,6 +173,19 @@ public class UsersController : ControllerBase
         _db.Users.Add(user);
         await _db.SaveChangesAsync();
         await _email.SendAsync(user.Email, "Verify your email", $"UserId: {user.Id}\nToken: {rawToken}");
+        await _email.SendAsync(user.Email, "Verify your email", $"UserId: {user.Id}\nToken: {rawToken}");
+
+        var verifyUrl = $"{_config["Frontend:VerifyEmailBaseUrl"]}?userId={user.Id}&token={Uri.EscapeDataString(rawToken)}";
+
+        var emailBody = $"""
+            <p>Welcome{(string.IsNullOrWhiteSpace(user.Username) ? "" : $", {user.Username}")}!</p>
+            <p>Please verify your email address to activate your account:</p>
+            <p><a href="{verifyUrl}">Verify my email</a></p>
+            <p>Or copy this link into your browser:<br>{verifyUrl}</p>
+            <p>This link expires in {_config["EmailVerification:TokenExpiryHours"]} hours.</p>
+            """;
+
+        await _email.SendAsync(user.Email, "Verify your email", emailBody);
 
         return (user, null);
     }
