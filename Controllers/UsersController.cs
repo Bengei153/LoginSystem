@@ -193,7 +193,7 @@ public class UsersController : ControllerBase
 
             <tr>
               <td style="background-color:#e6f1fb; padding:24px; text-align:center;">
-                <span style="font-size:18px; font-weight:600; color:#0c447c; font-family:Arial,Helvetica,sans-serif;">QuizWebApp</span>
+                <span style="font-size:18px; font-weight:600; color:#0c447c; font-family:Arial,Helvetica,sans-serif;">Questioning</span>
               </td>
             </tr>
 
@@ -232,7 +232,7 @@ public class UsersController : ControllerBase
             <tr>
               <td style="border-top:1px solid #e0ded6; padding:12px 24px; text-align:center;">
                 <p style="margin:0; font-size:11px; color:#b4b2a9; font-family:Arial,Helvetica,sans-serif;">
-                  Sent by QuizWebApp &middot; you're receiving this because an admin created an account for you
+                  Sent by Questioning &middot; you're receiving this because an admin created an account for you
                 </p>
               </td>
             </tr>
